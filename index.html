@@ -61,13 +61,34 @@
         <label for="city">Город:</label>
         <input type="text" id="city" name="city" required>
 
-        <label for="date">Дата:</label>
+        <label for="date">Дата рождения:</label>
         <input type="date" id="date" name="date" required>
 
-        <label for="time">Время:</label>
+        <label for="time">Время рождения:</label>
         <input type="time" id="time" name="time" required>
 
         <input type="submit" value="Отправить">
     </form>
+    <script>
+        function sendData() {
+            const name = document.getElementById("name").value;
+            const city = document.getElementById("city").value;
+            const birthdate = document.getElementById("date").value;
+            const birthtime = document.getElementById("time").value;
+
+            const data = JSON.stringify({
+                name: name,
+                city: city,
+                birthdate: birthdate,
+                birthtime: birthtime
+            });
+
+            Telegram.WebApp.sendData(data);
+            Telegram.WebApp.close();
+        }
+
+        Telegram.WebApp.ready();
+        Telegram.WebApp.MainButton.setText('Отправить').show().onClick(sendData);
+    </script>
 </body>
 </html>
