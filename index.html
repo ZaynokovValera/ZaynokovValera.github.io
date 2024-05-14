@@ -58,6 +58,13 @@
         <label for="name">Имя:</label>
         <input type="text" id="name" name="name" required>
 
+        <label for="sex">Пол:</label>
+        <select id="gender" name="sex" required>
+            <option value="">Выберите пол</option>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+        </select>
+
         <label for="city">Город:</label>
         <input type="text" id="city" name="city" required>
 
@@ -70,12 +77,14 @@
     <script>
         function sendData() {
             const name = document.getElementById("name").value;
+            const gender = document.getElementById("sex").value;
             const city = document.getElementById("city").value;
             const birthdate = document.getElementById("date").value;
             const birthtime = document.getElementById("time").value;
 
             const data = JSON.stringify({
                 name: name,
+                sex: sex,
                 city: city,
                 birthdate: birthdate,
                 birthtime: birthtime
