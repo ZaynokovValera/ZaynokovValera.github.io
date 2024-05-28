@@ -178,7 +178,14 @@
                 year = maxYear.toString();
             }
             
-            if (value.length >= 2) value = day + '.' + month + '.' + year;
+            if (value.length > 2 && value.length <= 4) {
+                value = day + '.' + month;
+            } else if (value.length > 4) {
+                value = day + '.' + month + '.' + year;
+            } else {
+                value = day;
+            }
+            
             this.value = value.slice(0, 10);
         });
         
