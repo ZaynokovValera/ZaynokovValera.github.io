@@ -173,11 +173,10 @@
             if (name && sex && city && date && time) {
                 submitBtn.removeAttribute('disabled')
                 submitBtn.classList.add('active');
+            } else {
+                submitBtn.setAttribute('disabled');
+                submitBtn.classList.remove('active');
             }
-            // } else {
-            //     submitBtn.setAttribute('disabled', 'disabled');
-            //     submitBtn.classList.remove('active');
-            // }
         }
         
         function sendData() {
