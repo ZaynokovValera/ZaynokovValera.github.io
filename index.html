@@ -96,57 +96,59 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <h1>Поделитесь информацией</h1>
-    <p>Чтобы давать точные ответы, мне нужны данные о вас</p>
-
-    <form class="form-container">
-            <div class="form-group">
-                <label for="name">Имя</label>
-                <input type="text" id="name" placeholder="Введите ваше полное имя">
-            </div>
-            <div class="form-group">
-                <label for="sex">Пол</label>
-                <select id="sex">
-                    <option value="" disabled selected>Выберите</option>
-                    <option value="Male">Мужской</option>
-                    <option value="Female">Женский</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="city">Город рождения</label>
-                <input type="text" id="city" placeholder="В каком городе вы родились?">
-            </div>
-            <div class="form-group">
-                <label for="date">Дата рождения</label>
-                <input type="date" id="date" placeholder="01.01.06">
-            </div>
-            <div class="form-group">
-                <label for="time">Время рождения</label>
-                <input type="time" id="birthtime" placeholder="Постарайтесь указать точное время">
-            </div>
-            <button class="submit-button">Отправить</button>
-        </form>
+    <div class="content">
+        <h1>Поделитесь информацией</h1>
+        <p>Чтобы давать точные ответы, мне нужны данные о вас</p>
     
-<!--     <form>
-        <label for="name">Имя:</label>
-        <input type="text" id="name" name="name" required>
-
-        <label for="sex">Пол:</label>
-        <select id="sex" name="sex" required>
-            <option value="">Выберите пол</option>
-            <option value="Male">Мужской</option>
-            <option value="Female">Женский</option>
-        </select>
-
-        <label for="city">Город:</label>
-        <input type="text" id="city" name="city" required>
-
-        <label for="date">Дата рождения:</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="time">Время рождения:</label>
-        <input type="time" id="time" name="time" required>
-    </form> -->
+        <form class="form-container">
+                <div class="form-group">
+                    <label for="name">Имя</label>
+                    <input type="text" id="name" placeholder="Введите ваше полное имя">
+                </div>
+                <div class="form-group">
+                    <label for="sex">Пол</label>
+                    <select id="sex">
+                        <option value="" disabled selected>Выберите</option>
+                        <option value="Male">Мужской</option>
+                        <option value="Female">Женский</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="city">Город рождения</label>
+                    <input type="text" id="city" placeholder="В каком городе вы родились?">
+                </div>
+                <div class="form-group">
+                    <label for="date">Дата рождения</label>
+                    <input type="date" id="date" placeholder="01.01.06">
+                </div>
+                <div class="form-group">
+                    <label for="time">Время рождения</label>
+                    <input type="time" id="birthtime" placeholder="Постарайтесь указать точное время">
+                </div>
+                <button class="submit-button">Отправить</button>
+            </form>
+        
+    <!--     <form>
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" required>
+    
+            <label for="sex">Пол:</label>
+            <select id="sex" name="sex" required>
+                <option value="">Выберите пол</option>
+                <option value="Male">Мужской</option>
+                <option value="Female">Женский</option>
+            </select>
+    
+            <label for="city">Город:</label>
+            <input type="text" id="city" name="city" required>
+    
+            <label for="date">Дата рождения:</label>
+            <input type="date" id="date" name="date" required>
+    
+            <label for="time">Время рождения:</label>
+            <input type="time" id="time" name="time" required>
+        </form> -->
+    </div>
     <script>
         function sendData() {
             const name = document.getElementById("name").value;
