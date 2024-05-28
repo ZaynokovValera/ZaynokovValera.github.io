@@ -94,6 +94,7 @@
         }
         .submit-button.active {
             background-color: #9A77FF;
+            color: #fff;
             cursor: pointer;
         }
     </style>
@@ -169,9 +170,13 @@
             Telegram.WebApp.sendData(data);
             Telegram.WebApp.close();
         }
-
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            if (!this.disabled) {
+                sendData();
+            }
+        });
         Telegram.WebApp.ready();
-        // Telegram.WebApp.MainButton.setText('Отправить').show().onClick(sendData);
+        
     </script>
 </body>
 </html>
