@@ -123,7 +123,7 @@
                 </div>
                 <div class="form-group">
                     <label for="time">Время рождения</label>
-                    <input type="time" id="birthtime" placeholder="Постарайтесь указать точное время" oninput="checkForm()">
+                    <input type="time" id="time" placeholder="Постарайтесь указать точное время" oninput="checkForm()">
                 </div>
                 <button class="submit-button" id="submitBtn" disabled>Отправить</button>
             </form>
@@ -133,8 +133,8 @@
             const name = document.getElementById('name').value;
             const sex = document.getElementById('sex').value;
             const city = document.getElementById('city').value;
-            const birthdate = document.getElementById('date').value;
-            const birthtime = document.getElementById('time').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
             const submitBtn = document.getElementById('submitBtn');
 
             if (name && sex && city && date && time) {
