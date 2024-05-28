@@ -178,7 +178,7 @@
                 year = maxYear.toString();
             }
             
-            if (value.length >= 2 && value.length <= 4) {
+            if (value.length >= 2 && value.length < 4) {
                 value = day + '.' + month;
             } else if (value.length >= 5) {
                 value = day + '.' + month + '.' + year;
