@@ -138,10 +138,10 @@
             const submitBtn = document.getElementById('submitBtn');
 
             if (name && sex && city && date && time) {
-                submitBtn.disabled = false;
+                submitBtn.removeAttribute('disabled')
                 submitBtn.classList.add('active');
             } else {
-                submitBtn.disabled = true;
+                submitBtn.setAttribute('disabled', 'disabled');
                 submitBtn.classList.remove('active');
             }
         }
