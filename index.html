@@ -103,11 +103,11 @@
         <form class="form-container">
                 <div class="form-group">
                     <label for="name">Имя</label>
-                    <input type="text" id="name" placeholder="Введите ваше полное имя">
+                    <input type="text" id="name" placeholder="Введите ваше полное имя" oninput="checkForm()">
                 </div>
                 <div class="form-group">
                     <label for="sex">Пол</label>
-                    <select id="sex">
+                    <select id="sex" onchange="checkForm()">
                         <option value="" disabled selected>Выберите</option>
                         <option value="Male">Мужской</option>
                         <option value="Female">Женский</option>
@@ -115,41 +115,37 @@
                 </div>
                 <div class="form-group">
                     <label for="city">Город рождения</label>
-                    <input type="text" id="city" placeholder="В каком городе вы родились?">
+                    <input type="text" id="city" placeholder="В каком городе вы родились?" oninput="checkForm()">
                 </div>
                 <div class="form-group">
                     <label for="date">Дата рождения</label>
-                    <input type="date" id="date" placeholder="01.01.06">
+                    <input type="date" id="date" placeholder="01.01.06" oninput="checkForm()">
                 </div>
                 <div class="form-group">
                     <label for="time">Время рождения</label>
-                    <input type="time" id="birthtime" placeholder="Постарайтесь указать точное время">
+                    <input type="time" id="birthtime" placeholder="Постарайтесь указать точное время" oninput="checkForm()">
                 </div>
-                <button class="submit-button">Отправить</button>
+                <button class="submit-button" id="submitBtn" disabled>Отправить</button>
             </form>
-        
-    <!--     <form>
-            <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" required>
-    
-            <label for="sex">Пол:</label>
-            <select id="sex" name="sex" required>
-                <option value="">Выберите пол</option>
-                <option value="Male">Мужской</option>
-                <option value="Female">Женский</option>
-            </select>
-    
-            <label for="city">Город:</label>
-            <input type="text" id="city" name="city" required>
-    
-            <label for="date">Дата рождения:</label>
-            <input type="date" id="date" name="date" required>
-    
-            <label for="time">Время рождения:</label>
-            <input type="time" id="time" name="time" required>
-        </form> -->
     </div>
     <script>
+        function checkForm() {
+            const name = document.getElementById('name').value;
+            const sex = document.getElementById('sex').value;
+            const city = document.getElementById('city').value;
+            const birthdate = document.getElementById('date').value;
+            const birthtime = document.getElementById('time').value;
+            const submitBtn = document.getElementById('submitBtn');
+
+            if (name && sex && city && date && time) {
+                submitBtn.disabled = false;
+                submitBtn.classList.add('active');
+            } else {
+                submitBtn.disabled = true;
+                submitBtn.classList.remove('active');
+            }
+        }
+        
         function sendData() {
             const name = document.getElementById("name").value;
             const sex = document.getElementById("sex").value;
