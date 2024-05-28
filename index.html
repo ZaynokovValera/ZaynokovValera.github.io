@@ -141,7 +141,17 @@
 
         document.getElementById('time').addEventListener('input', function() {
             let value = this.value.replace(/\D/g, '');
-            if (value.length >= 2) value = value.slice(0, 2) + ':' + value.slice(2);
+            let hours = value.slice(0, 2);
+            let minutes = value.slice(2, 4);
+            
+            if (hours.length === 2 && parseInt(hours) > 23) {
+                hours = '23';
+            }
+            if (minutes.length === 2 && parseInt(minutes) > 59) {
+                minutes = '59';
+            }
+            
+            if (value.length >= 2) value = hours + ':' + minutes;
             this.value = value.slice(0, 5);
         });
         
@@ -151,8 +161,24 @@
 
         document.getElementById('date').addEventListener('input', function() {
             let value = this.value.replace(/\D/g, '');
-            if (value.length >= 2) value = value.slice(0, 2) + '.' + value.slice(2);
-            if (value.length >= 5) value = value.slice(0, 5) + '.' + value.slice(5);
+            let day = value.slice(0, 2);
+            let month = value.slice(2, 4);
+            let year = value.slice(4, 8);
+            
+            const currentYear = new Date().getFullYear();
+            const maxYear = currentYear - 18;
+            
+            if (day.length === 2 && parseInt(day) > 31) {
+                day = '31';
+            }
+            if (month.length === 2 && parseInt(month) > 12) {
+                month = '12';
+            }
+            if (year.length === 4 && parseInt(year) > maxYear) {
+                year = maxYear.toString();
+            }
+            
+            if (value.length >= 2) value = day + '.' + month + '.' + year;
             this.value = value.slice(0, 10);
         });
         
