@@ -85,8 +85,12 @@
             background-repeat: no-repeat;
             background-position: top 18px right 15px;
         }
-        .placeholder-option {
+        .form-group select.placeholder {
             color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .form-group select.not-placeholder {
+            color: #fff;
         }
         .submit-button {
             width: 100%;
@@ -140,6 +144,20 @@
             </form>
     </div>
     <script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const selectElement = document.getElementById('sex');
+            
+            selectElement.addEventListener('change', function() {
+                if (selectElement.value === "") {
+                    selectElement.classList.add('placeholder');
+                    selectElement.classList.remove('not-placeholder');
+                } else {
+                    selectElement.classList.remove('placeholder');
+                    selectElement.classList.add('not-placeholder');
+                }
+            });
+        });
 
         document.getElementById('time').addEventListener('focus', function() {
             this.placeholder = 'чч:мм';
