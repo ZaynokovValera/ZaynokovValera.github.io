@@ -227,7 +227,10 @@
             const time = document.getElementById('time').value;
             const submitBtn = document.getElementById('submitBtn');
 
-            if (name && sex && city && date && time) {
+            const isDateValid = date.length === 10;
+            const isTimeValid = time.length === 5;
+
+            if (name && sex && city && isDateValid && isTimeValid) {
                 submitBtn.removeAttribute('disabled')
                 submitBtn.classList.add('active');
             } else {
