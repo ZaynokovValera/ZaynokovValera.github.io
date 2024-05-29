@@ -77,7 +77,7 @@
         }
         .form-group input::placeholder {
             color: rgba(255, 255, 255, 0.5);
-            padding: 
+            padding:
         }
         .form-group select {
             appearance: none;
@@ -85,10 +85,13 @@
             background-repeat: no-repeat;
             background-position: top 18px right 15px;
         }
+        .form-group select option {
+            background: #444;
+            color: #fff;
+        }
         .form-group select.placeholder {
             color: rgba(255, 255, 255, 0.5);
         }
-        
         .form-group select.not-placeholder {
             color: #fff;
         }
@@ -114,7 +117,7 @@
     <div class="content">
         <h1>Поделитесь информацией</h1>
         <p>Чтобы давать точные ответы, мне нужны данные о вас</p>
-    
+
         <form class="form-container">
                 <div class="form-group">
                     <label for="name">Имя</label>
@@ -147,7 +150,7 @@
 
         document.addEventListener("DOMContentLoaded", function() {
             const selectElement = document.getElementById('sex');
-            
+
             selectElement.addEventListener('change', function() {
                 if (selectElement.value === "") {
                     selectElement.classList.add('placeholder');
@@ -167,18 +170,24 @@
             let value = this.value.replace(/\D/g, '');
             let hours = value.slice(0, 2);
             let minutes = value.slice(2, 4);
-            
+
             if (hours.length === 2 && parseInt(hours) > 23) {
                 hours = '23';
             }
             if (minutes.length === 2 && parseInt(minutes) > 59) {
                 minutes = '59';
             }
-            
-            if (value.length >= 2) value = hours + ':' + minutes;
+
+            if (value.length >= 2 && value.length < 4) {
+                value = hours + (minutes ? ':' + minutes : '');
+            } else if (value.length >= 4) {
+                value = hours + ':' + minutes;
+            } else {
+                value = hours;
+            }
             this.value = value.slice(0, 5);
         });
-        
+
         document.getElementById('date').addEventListener('focus', function() {
             this.placeholder = 'дд.мм.гггг';
         });
@@ -188,10 +197,10 @@
             let day = value.slice(0, 2);
             let month = value.slice(2, 4);
             let year = value.slice(4, 8);
-            
+
             const currentYear = new Date().getFullYear();
             const maxYear = currentYear - 18;
-            
+
             if (day.length === 2 && parseInt(day) > 31) {
                 day = '31';
             }
@@ -201,24 +210,24 @@
             if (year.length === 4 && parseInt(year) > maxYear) {
                 year = maxYear.toString();
             }
-            
+
             if (value.length >= 2 && value.length < 4) {
-                value = day + '.' + month;
+                value = day + (month ? '.' + month : '');
             } else if (value.length >= 4) {
-                value = day + '.' + month + '.' + year;
+                value = day + '.' + month + (year ? '.' + year : '');
             } else {
                 value = day;
             }
-            
+
             this.value = value.slice(0, 10);
         });
-        
+
         document.getElementById('submitBtn').addEventListener('click', function() {
             if (!this.disabled) {
                 sendData();
             }
         });
-        
+
         function checkForm() {
             const name = document.getElementById('name').value;
             const sex = document.getElementById('sex').value;
@@ -238,7 +247,7 @@
                 submitBtn.classList.remove('active');
             }
         }
-        
+
         function sendData() {
             const name = document.getElementById("name").value;
             const sex = document.getElementById("sex").value;
@@ -257,9 +266,9 @@
             Telegram.WebApp.sendData(data);
             Telegram.WebApp.close();
         }
-        
+
         Telegram.WebApp.ready();
-        
+
     </script>
 </body>
 </html>
